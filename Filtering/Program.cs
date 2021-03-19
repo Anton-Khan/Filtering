@@ -12,11 +12,11 @@ namespace Filtering
             JaccardTask jcIndex = new JaccardTask();
             jcIndex.Run();
 
-
             L_OneTask ln = new L_OneTask();
             ln.Run();
 
-
+            L_TwoTask lt = new L_TwoTask();
+            lt.Run();
         }
     }
 }
