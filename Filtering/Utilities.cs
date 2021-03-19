@@ -7,11 +7,10 @@ namespace Filtering
 {
     public static class Utilities
     {
-        public static List<double[]> _table;
 
-        public static void CreateTable(int users, int items, int minGrade, int maxGrade)
+        public static List<double[]> CreateTable(int users, int items, int minGrade, int maxGrade)
         {
-            _table = new List<double[]>();
+            List<double[]> table = new List<double[]>();
             Random rand = new Random();
             for (int i = 0; i < users; i++)
             {
@@ -21,17 +20,14 @@ namespace Filtering
                     i_items[j] = rand.Next(minGrade, maxGrade + 1);
                 }
 
-                _table.Add(i_items);
+                table.Add(i_items);
             }
+            return table;
         }
 
         public static void DisplayTable(List<double[]> table, string str, string col, bool replaceZeroes=false)
         {
-            if (table == null)
-            {
-                table = _table;
-            }
-
+            
             int counter = 0;
             foreach (var item in table.First())
             {

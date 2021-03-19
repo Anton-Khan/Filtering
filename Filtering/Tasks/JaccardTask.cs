@@ -1,21 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Filtering
 {
-    class JaccardLab
+    class JaccardTask
     {
+        private List<double[]> _table;
         public void Run()
         {
-
-            Console.WriteLine("\t\t\t\tJaccardAlgoritm");
+            
+            Console.WriteLine("\n\t\t\t\tJaccardAlgoritm");
             Console.WriteLine("\tDatabase");
 
-            Utilities.CreateTable(10, 10, 0, 1);
-            Utilities.DisplayTable(null, "user", "item");
+            _table = Utilities.CreateTable(10, 10, 0, 1);
+            Utilities.DisplayTable(_table, "user", "item");
             Console.WriteLine("\n");
 
             Console.WriteLine("\t\t\tSim(user, user)\n");
-            JaccardAlgo jc = new JaccardAlgo(Utilities._table);
+            JaccardAlgo jc = new JaccardAlgo(_table);
             Utilities.DisplayTable(jc.FindSimilarUsers(), "user", "user", true);
             Console.WriteLine("\n");
 
