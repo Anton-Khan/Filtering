@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace Filtering
 {
-    class JaccardIndex
+    class JaccardAlgo
     {
         private List<double[]> _table;
         private List<double[]> _transponsedTable;
-        public JaccardIndex( List<double[]> table)
+        public JaccardAlgo( List<double[]> table)
         {
             _table = table;
             _transponsedTable = TransposeTable();
@@ -21,7 +21,6 @@ namespace Filtering
 
         public List<double[]> FindSimilarUsers()
         {
-
             return FindSimilar(_table);
         }
 
@@ -30,19 +29,18 @@ namespace Filtering
             List<double[]> similarities = new List<double[]>();
             for (int i = 0; i < table.Count-1; i++)
             {
-                double[] relations = new double[table[0].Length];
+                double[] relations = new double[table.First().Length];
                 for (int j = i+1; j < table.Count; j++)
                 {
                     int sum = 0;
-                    for (int k = 0; k < table[0].Length; k++)
+                    for (int k = 0; k < table.First().Length; k++)
                     {
                         if (table[i][k] == table[j][k])
                         {
                             sum++;
                         }
                     }
-                    relations[j] = sum / (double)table[0].Length;
-                    
+                    relations[j] = sum / (double)table.First().Length;
                 }
                 similarities.Add(relations);
             }
@@ -53,7 +51,7 @@ namespace Filtering
         {
             List<double[]> transponsedTable = new List<double[]>();
 
-            for (int i = 0; i < _table[0].Length; i++)
+            for (int i = 0; i < _table.First().Length; i++)
             {
                 double[] users = new double[_table.Count];
 
@@ -65,6 +63,8 @@ namespace Filtering
             }
             return transponsedTable;
         }
+
+        
 
     }
 }
