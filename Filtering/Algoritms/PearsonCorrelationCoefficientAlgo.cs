@@ -8,9 +8,6 @@ namespace Filtering.Algoritms
 {
     class PearsonCorrelationCoefficientAlgo : Algoritm
     {
-
-        private List<double[]> _table;
-
         private List<double[]> FindSimilar(List<double[]> table)
         {
             List<double[]> similarities = new List<double[]>();
@@ -60,11 +57,6 @@ namespace Filtering.Algoritms
             }
 
             return numerator / (Math.Sqrt(denominator_a) * Math.Sqrt(denominator_b));
-        }
-
-        public override void SetTable(List<double[]> table)
-        {
-            _table = table;
         }
 
         public override List<double[]> FindSimilarUsers()

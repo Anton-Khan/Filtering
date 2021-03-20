@@ -8,8 +8,7 @@ namespace Filtering.Algoritms
 {
     class CosineSimilarityAlgo : Algoritm
     {
-        private List<double[]> _table;
-
+       
         public override Algoritm Create()
         {
             return new CosineSimilarityAlgo();
@@ -18,11 +17,6 @@ namespace Filtering.Algoritms
         public override List<double[]> FindSimilarUsers()
         {
             return FindSimilar(_table);
-        }
-
-        public override void SetTable(List<double[]> table)
-        {
-            _table = table;
         }
 
         private List<double[]> FindSimilar(List<double[]> table)

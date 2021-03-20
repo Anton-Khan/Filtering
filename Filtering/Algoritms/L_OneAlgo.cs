@@ -7,13 +7,7 @@ namespace Filtering.Algoritms
 {
     class L_OneAlgo : Algoritm
     {
-        private List<double[]> _table;
-
-        public override void SetTable(List<double[]> table)
-        {
-            _table = table;
-        }
-
+        
         public override List<double[]> FindSimilarUsers()
         {
             return FindSimilar(_table);
