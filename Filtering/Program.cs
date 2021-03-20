@@ -17,6 +17,9 @@ namespace Filtering
 
             L_TwoTask lt = new L_TwoTask();
             lt.Run();
+
+            CosineSimilarityTask cs = new CosineSimilarityTask();
+            cs.Run();
         }
     }
 }
