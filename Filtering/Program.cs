@@ -20,6 +20,10 @@ namespace Filtering
 
             CosineSimilarityTask cs = new CosineSimilarityTask();
             cs.Run();
+
+            PearsonCorrelationCoefficientTask pk = new PearsonCorrelationCoefficientTask();
+            pk.Run();
+
         }
     }
 }
