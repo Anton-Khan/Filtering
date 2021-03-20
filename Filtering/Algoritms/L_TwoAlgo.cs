@@ -1,22 +1,28 @@
-﻿using System;
+﻿using Filtering.Environment;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+
 
 namespace Filtering.Algoritms
 {
-    class L_TwoAlgo
+    class L_TwoAlgo : Algoritm
     {
         private List<double[]> _table;
 
-        public L_TwoAlgo(List<double[]> table)
+        public override Algoritm Create()
         {
-            _table = table;
+            return new L_TwoAlgo();
         }
 
-        public List<double[]> FindSimilarUsers()
+        public override List<double[]> FindSimilarUsers()
         {
             return FindSimilar(_table);
+        }
+
+        public override void SetTable(List<double[]> table)
+        {
+            _table = table;
         }
 
         private List<double[]> FindSimilar(List<double[]> table)

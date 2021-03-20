@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using Filtering.Environment;
 
 namespace Filtering.Algoritms
 {
-    class L_OneAlgo
+    class L_OneAlgo : Algoritm
     {
         private List<double[]> _table;
-        
-        public L_OneAlgo(List<double[]> table)
+
+        public override void SetTable(List<double[]> table)
         {
             _table = table;
         }
 
-        public List<double[]> FindSimilarUsers()
+        public override List<double[]> FindSimilarUsers()
         {
             return FindSimilar(_table);
         }
@@ -38,5 +38,11 @@ namespace Filtering.Algoritms
             }
             return similarities;
         }
+
+        public override Algoritm Create()
+        {
+            return new L_OneAlgo();
+        }
+
     }
 }

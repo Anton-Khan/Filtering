@@ -1,22 +1,28 @@
-﻿using System;
+﻿using Filtering.Environment;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 
 namespace Filtering.Algoritms
 {
-    class CosineSimilarityAlgo
+    class CosineSimilarityAlgo : Algoritm
     {
         private List<double[]> _table;
 
-        public CosineSimilarityAlgo(List<double[]> table)
+        public override Algoritm Create()
         {
-            _table = table;
+            return new CosineSimilarityAlgo();
         }
 
-        public List<double[]> FindSimilarUsers()
+        public override List<double[]> FindSimilarUsers()
         {
             return FindSimilar(_table);
+        }
+
+        public override void SetTable(List<double[]> table)
+        {
+            _table = table;
         }
 
         private List<double[]> FindSimilar(List<double[]> table)

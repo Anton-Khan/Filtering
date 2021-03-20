@@ -1,24 +1,15 @@
-﻿using System;
+﻿using Filtering.Environment;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+
 
 namespace Filtering.Algoritms
 {
-    class PearsonCorrelationCoefficientAlgo
+    class PearsonCorrelationCoefficientAlgo : Algoritm
     {
 
         private List<double[]> _table;
-
-        public PearsonCorrelationCoefficientAlgo(List<double[]> table)
-        {
-            _table = table;
-        }
-
-        public List<double[]> FindSimilarUsers()
-        {
-            return FindSimilar(_table);
-        }
 
         private List<double[]> FindSimilar(List<double[]> table)
         {
@@ -71,5 +62,19 @@ namespace Filtering.Algoritms
             return numerator / (Math.Sqrt(denominator_a) * Math.Sqrt(denominator_b));
         }
 
+        public override void SetTable(List<double[]> table)
+        {
+            _table = table;
+        }
+
+        public override List<double[]> FindSimilarUsers()
+        {
+            return FindSimilar(_table);
+        }
+
+        public override Algoritm Create()
+        {
+            return new PearsonCorrelationCoefficientAlgo();
+        }
     }
 }
